@@ -10,12 +10,13 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>مقدم طباخكم</title>
+<title>شريك طباخكم</title>
 <style>
 :root{--bg:#0b1120;--card:#141c2f;--fg:#e8edf5;--mu:#8391a7;--ac:#f97316;--ok:#16a34a;--bad:#dc2626;--bd:#232e45}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;font-size:16px;line-height:1.5}
-body{min-height:100vh;padding-bottom:calc(64px + env(safe-area-inset-bottom))}
+body{min-height:100vh;padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+.trow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px}
 .w{max-width:560px;margin:0 auto;padding:12px 16px 0}
 h1{font-size:22px;margin:8px 0 12px;font-weight:700}h2{font-size:13px;margin:22px 0 8px;font-weight:600;color:var(--mu);letter-spacing:.3px}
 .card{background:var(--card);border-radius:14px;padding:16px;margin:10px 0;border:1px solid var(--bd)}
@@ -25,22 +26,22 @@ input:focus{outline:0;border-color:var(--ac)}
 .btn{display:block;width:100%;padding:13px;border:0;border-radius:10px;background:var(--ac);color:#fff;font-size:16px;font-weight:600;margin:8px 0}
 .btn.ok{background:var(--ok)}.btn.bad{background:var(--bad)}.btn.sec{background:#1f2a42;color:#cbd5e1}
 .row{display:flex;gap:10px}.row>*{flex:1}
-.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;position:sticky;top:0;background:rgba(11,17,32,.92);backdrop-filter:blur(8px);z-index:5;border-bottom:1px solid var(--bd)}
+.top{display:flex;flex-direction:column;padding:0;position:sticky;top:0;background:rgba(11,17,32,.92);backdrop-filter:blur(8px);z-index:5;border-bottom:1px solid var(--bd)}
 .top b{font-size:16px;font-weight:700}
 .tg{width:46px;height:26px;border-radius:20px;background:#334155;position:relative;border:0;padding:0;flex:none;transition:.2s}
 .tg::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}
 .tg.on{background:var(--ok)}.tg.on::after{right:23px}
 .onoff{display:flex;align-items:center;gap:10px;border:0;background:none;color:var(--fg);font-size:14px;font-weight:600;padding:0}
 .onoff .tg{pointer-events:none}
-.nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--bg);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom);z-index:6}
-.nav button{flex:1;padding:14px 4px;background:none;border:0;color:var(--mu);font-size:15px;font-weight:600;position:relative}
-.nav button.on{color:var(--ac)}
-.dot{position:absolute;top:8px;right:50%;margin-right:-46px;min-width:18px;height:18px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;line-height:18px;text-align:center;padding:0 5px}
+.nav{display:flex;background:transparent;border-top:1px solid var(--bd)}
+.nav button{flex:1;padding:12px 4px;background:none;border:0;color:var(--mu);font-size:15px;font-weight:600;position:relative}
+.nav button.on{color:var(--fg);box-shadow:inset 0 -3px 0 var(--ac)}
+.dot{position:absolute;top:6px;right:50%;margin-right:-52px;min-width:18px;height:18px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;line-height:18px;text-align:center;padding:0 5px}
 .tag{display:inline-block;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:600;background:#1f2a42;color:#cbd5e1}
 .tag.ok{background:rgba(22,163,74,.18);color:#4ade80}.tag.off{background:var(--bad)}.tag.new{background:rgba(249,115,22,.16);color:#fb923c}
 .big{font-size:24px;font-weight:700}
 .empty{text-align:center;color:var(--mu);padding:40px 10px}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(80px + env(safe-area-inset-bottom));background:#e2e8f0;color:#0b1120;padding:11px 18px;border-radius:10px;font-weight:600;z-index:50;max-width:90%;text-align:center;font-size:15px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom));background:#e2e8f0;color:#0b1120;padding:11px 18px;border-radius:10px;font-weight:600;z-index:50;max-width:90%;text-align:center;font-size:15px}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin:8px 0}
 .cal div{text-align:center;padding:8px 0;border-radius:8px;background:var(--card);font-size:14px}
 .cal .h{background:none;color:var(--mu);font-size:12px}
@@ -49,7 +50,7 @@ input:focus{outline:0;border-color:var(--ac)}
 a{color:#7dd3fc}
 .kv{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--bd)}.kv:last-child{border-bottom:0}
 .kv small{display:block;color:var(--mu);font-size:13px;margin-top:2px}
-.sbar{position:fixed;left:10px;right:10px;bottom:calc(70px + env(safe-area-inset-bottom));background:#e2e8f0;color:#0b1120;border-radius:12px;padding:10px 12px;z-index:40;display:flex;gap:8px;align-items:center;font-weight:600}
+.sbar{position:fixed;left:10px;right:10px;bottom:calc(14px + env(safe-area-inset-bottom));background:#e2e8f0;color:#0b1120;border-radius:12px;padding:10px 12px;z-index:40;display:flex;gap:8px;align-items:center;font-weight:600}
 .sbar span{flex:1}.sbar button{border:0;border-radius:8px;padding:9px 12px;font-weight:600;background:#0b1120;color:#fff}.sbar button.x{background:#94a3b8}
 .btn.s{padding:10px;font-size:14px}
 .off-note{background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.35);color:#fca5a5;border-radius:12px;padding:12px 14px;margin:12px 0;font-size:14px}
@@ -187,7 +188,7 @@ function viewForgot(mode){
  forgotFlow(document.getElementById('fgbox'),(SUP&&SUP.wa)||'9647817964134',function(){boot()},function(){viewLogin()},mode);
 }
 function viewLogin(){
- app.innerHTML='<div class="w"><h1>مقدم طباخكم</h1><p class="mu">سجّل دخول بنفس حسابك بتطبيق طباخكم.</p><div class="card"><label>اسم المستخدم</label><input id="u" autocomplete="username" autocapitalize="none"><label>كلمة السر</label><input id="p" type="password" autocomplete="current-password"><button class="btn" id="go">دخول</button><button class="btn sec" id="fgu" type="button">هل نسيت اسم المستخدم؟</button><button class="btn sec" id="fgl" type="button">هل نسيت كلمة المرور؟</button></div><p class="mu">ما عندك حساب؟ سوّي حساب عادي من تطبيق طباخكم أول، وبعدها ادخل هنا.</p>'+instHtml()+'</div>';instBind();
+ app.innerHTML='<div class="w"><h1>شريك طباخكم</h1><p class="mu">سجّل دخول بنفس حسابك بتطبيق طباخكم.</p><div class="card"><label>اسم المستخدم</label><input id="u" autocomplete="username" autocapitalize="none"><label>كلمة السر</label><input id="p" type="password" autocomplete="current-password"><button class="btn" id="go">دخول</button><button class="btn sec" id="fgu" type="button">هل نسيت اسم المستخدم؟</button><button class="btn sec" id="fgl" type="button">هل نسيت كلمة المرور؟</button></div><p class="mu">ما عندك حساب؟ سوّي حساب عادي من تطبيق طباخكم أول، وبعدها ادخل هنا.</p>'+instHtml()+'</div>';instBind();
  document.getElementById('fgl').onclick=function(){viewForgot()};document.getElementById('fgu').onclick=function(){viewForgot('user')};
  document.getElementById('go').onclick=async function(ev){
   var u=ad(document.getElementById('u').value.trim()),w=document.getElementById('p').value;
@@ -225,7 +226,7 @@ async function loadAll(quiet){
   ORD=o;LAST=1;
   var e=await Q(sb.rpc('provider_earnings'));EARN=e||[];
   var p=await Q(sb.rpc('provider_pending_pay'));PEND=Number(p)||0;
-  document.title=(n?'('+n+') ':'')+'مقدم طباخكم';
+  document.title=(n?'('+n+') ':'')+'شريك طباخكم';
   updDot(n);if(ME&&document.getElementById('body')&&TAB!=='prof')render();
  }catch(e){if(!quiet&&!document.hidden)toast(errMsg(e),3000)}
 }
@@ -237,7 +238,7 @@ async function loadSup(){try{var r=await Q(sb.from('settings').select('key,value
 /* ---------- الواجهة ---------- */
 function shell(){
  var offered=ORD.filter(function(x){return x.state==='offered'}).length+OFF.length;
- app.innerHTML='<div class="top"><div><b>'+esc(ME.name)+'</b><div class="mu" style="font-size:13px">'+esc(ME.active?(TABN[ME.tab]||''):'حسابك موقوف')+'</div></div><button class="onoff" id="tg" aria-label="تشغيل أو إطفاء"><span>'+(ME.online?'متاح':'غير متاح')+'</span><span class="tg'+(ME.online?' on':'')+'"></span></button></div><div class="w" id="body"></div><div class="nav"><button data-t="orders">الطلبات'+(offered?'<span class="dot">'+offered+'</span>':'')+'</button><button data-t="earn">الأرباح</button><button data-t="prof">حسابي</button></div>';
+ app.innerHTML='<div class="top"><div class="trow"><div><b>'+esc(ME.name)+'</b><div class="mu" style="font-size:13px">'+esc(ME.active?(TABN[ME.tab]||''):'حسابك موقوف')+'</div></div><button class="onoff" id="tg" aria-label="تشغيل أو إطفاء"><span>'+(ME.online?'متاح':'غير متاح')+'</span><span class="tg'+(ME.online?' on':'')+'"></span></button></div><div class="nav"><button data-t="orders">الطلبات'+(offered?'<span class="dot">'+offered+'</span>':'')+'</button><button data-t="earn">الأرباح</button><button data-t="prof">حسابي</button></div></div><div class="w" id="body"></div>';
  document.getElementById('tg').onclick=async function(ev){
   var want=!ME.online;ev.target.disabled=true;
   try{await Q(sb.rpc('provider_set_online',{p_on:want}));ME.online=want;await loadAll(true);shell();render();toast(want?'صرت متاح: توصلك الطلبات':'صرت غير متاح')}catch(e){toast(errMsg(e))}finally{ev.target.disabled=false}
