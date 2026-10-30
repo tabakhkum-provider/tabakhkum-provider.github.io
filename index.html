@@ -251,7 +251,7 @@ function render(){
  bind(b);if(TAB==='prof')instBind();
 }
 function hl(h){h=Number(h);var hh=h%24;var x=hh===0?'12 منتصف الليل':hh<12?hh+' صباحاً':hh===12?'12 ظهراً':(hh-12)+' مساءً';return h>24?x+' بعد منتصف الليل':x}
-function items(l){l=l||[];var d=0;var t=l.map(function(x){if(x.days>d)d=x.days;return esc(x.name)+(x.from!=null&&x.to!=null?' ('+hl(x.from)+' - '+hl(x.to)+')':' × '+esc(x.qty))}).join('، ');return t+(d>1?' - لمدة '+d+' أيام':'')}
+function items(l){l=l||[];var d=0;var t=l.map(function(x){if(x.days>d)d=x.days;return esc(x.name)+(x.from!=null&&x.to!=null?' ('+hl(x.from)+' - '+hl(x.to)+')':' - '+(/^\s*للكيلو\s*$/.test(x.unit||'')?esc(x.qty)+' كيلو':'× '+esc(x.qty)))}).join('، ');return t+(d>1?' - لمدة '+d+' أيام':'')}
 function jobCard(o,kind){
  var mapl=(o.lat!=null&&o.lng!=null)?' <a target="_blank" rel="noopener" href="https://www.google.com/maps?q='+Number(o.lat)+','+Number(o.lng)+'">الخريطة</a>':'';
  var head='<div class="t1">'+esc(occ(o.occasion))+' - '+esc(meal(o.meal))+'</div><div class="t2">'+esc(dname(o.event_date))+'<br>'+(kind==='acc'?'الزبون: '+esc(o.cust_name||'')+'<br>العنوان: '+esc(o.address||o.area||'')+mapl:'المنطقة: '+esc(o.area||''))+'</div><div class="mu">'+items(o.items)+'</div><div class="pay">'+money(o.pay)+'</div>';
