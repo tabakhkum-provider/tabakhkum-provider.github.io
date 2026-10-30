@@ -10,7 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<title>فريق طباخكم</title>
+<title>فريق طباخكم لتقديم الخدمات</title>
 <style>
 :root{--bg:#0b1120;--card:#141c2f;--fg:#e8edf5;--mu:#8391a7;--ac:#f97316;--ok:#16a34a;--bad:#dc2626;--bd:#232e45}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -188,7 +188,7 @@ function viewForgot(mode){
  forgotFlow(document.getElementById('fgbox'),(SUP&&SUP.wa)||'9647817964134',function(){boot()},function(){viewLogin()},mode);
 }
 function viewLogin(){
- app.innerHTML='<div class="w"><h1>فريق طباخكم</h1><p class="mu">سجّل دخول بنفس حسابك بتطبيق طباخكم.</p><div class="card"><label>اسم المستخدم</label><input id="u" autocomplete="username" autocapitalize="none"><label>كلمة السر</label><input id="p" type="password" autocomplete="current-password"><button class="btn" id="go">دخول</button><button class="btn sec" id="fgu" type="button">هل نسيت اسم المستخدم؟</button><button class="btn sec" id="fgl" type="button">هل نسيت كلمة المرور؟</button></div><p class="mu">ما عندك حساب؟ سوّي حساب عادي من تطبيق طباخكم أول، وبعدها ادخل هنا.</p>'+instHtml()+'</div>';instBind();
+ app.innerHTML='<div class="w"><h1>فريق طباخكم لتقديم الخدمات</h1><p class="mu">سجّل دخول بنفس حسابك بتطبيق طباخكم.</p><div class="card"><label>اسم المستخدم</label><input id="u" autocomplete="username" autocapitalize="none"><label>كلمة السر</label><input id="p" type="password" autocomplete="current-password"><button class="btn" id="go">دخول</button><button class="btn sec" id="fgu" type="button">هل نسيت اسم المستخدم؟</button><button class="btn sec" id="fgl" type="button">هل نسيت كلمة المرور؟</button></div><p class="mu">ما عندك حساب؟ سوّي حساب عادي من تطبيق طباخكم أول، وبعدها ادخل هنا.</p>'+instHtml()+'</div>';instBind();
  document.getElementById('fgl').onclick=function(){viewForgot()};document.getElementById('fgu').onclick=function(){viewForgot('user')};
  document.getElementById('go').onclick=async function(ev){
   var u=ad(document.getElementById('u').value.trim()),w=document.getElementById('p').value;
