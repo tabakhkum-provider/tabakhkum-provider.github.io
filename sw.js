@@ -1,5 +1,5 @@
-/* شريك طباخكم: يخلي التطبيق يفتح حتى لو الإنترنت ضعيف. ما يخزّن بيانات الحسابات. */
-const V='tkp-v11';
+/* فريق طباخكم: يخلي التطبيق يفتح حتى لو الإنترنت ضعيف. ما يخزّن بيانات الحسابات. */
+const V='tkp-v12';
 const SHELL=['./','index.html','manifest.webmanifest','icon-192.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL)).catch(()=>{}));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
